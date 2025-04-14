@@ -6,10 +6,11 @@ public class CachingProxyServer
 {
     private readonly HttpClient _httpClient;
     private readonly HttpListener _httpListener;
+    public Uri RemoteUrl { get; set; }
     private Dictionary<string,string> _caches = new();
     
     
-    public CachingProxyServer(int port)
+    public CachingProxyServer(string port)
     {
         _httpClient = new HttpClient();
         _httpListener = new HttpListener();
