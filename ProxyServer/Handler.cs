@@ -1,15 +1,14 @@
+using System.Net;
+
 namespace CachingProxyServer;
 
-public class CommandHandler
+public class Handler
 {
     private CachingProxyServer _proxyServer;
-    public CommandHandler()
-    {
-    }
 
-    public string Handle(string command)
+    public void HandleCommand(string command)
     {
-        string [] cmds = command.Split(" ");
+        var cmds = command.Split(" ");
         
         for (int i = 0; i < cmds.Length; i++)
         {
@@ -19,14 +18,16 @@ public class CommandHandler
                     _proxyServer = new CachingProxyServer(cmds[i + 1]);
                     break;
                 case "--origin" when i + 1 < cmds.Length:
-                    _proxyServer.RemoteUrl = new Uri(cmds[i + 1]);
+                    _proxyServer.HttpClient.BaseAddress = new Uri(cmds[i + 1]);
                     break;
-                default:
-                    return "Error parsing command";
             }
         }
+    }
 
-        return "";
+    public async Task HandleRequest()
+    {
+        var context = await _proxyServer.HttpListener.GetContextAsync();
+        await _proxyServer.HandleRequest(context);
     }
     
 }
