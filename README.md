@@ -35,3 +35,5 @@ Un simple servidor proxy con caché implementado en C# que intercepta peticiones
 ✅ Interfaz web o CLI interactiva para visualizar estadísticas de caché.
 
 ✅ Logs estructurados usando ILogger o Serilog.
+
+https://roadmap.sh/projects/caching-server
