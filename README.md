@@ -22,7 +22,7 @@ Un simple servidor proxy con caché implementado en C# que intercepta peticiones
 ## Ejemplo de uso:
 --port 5000 --origin https://jsonplaceholder.typicode.com
 
-💡 Futuras Funciones
+## 💡 Futuras Funciones
 
 ✅ Soporte para diferentes métodos HTTP (POST, PUT, DELETE): actualmente solo funciona bien con GET.
 
